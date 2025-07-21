@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: back
+  profiles:
+    active: dev
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    hikari:
+      auto-commit: false
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true #
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: true
+  sql:
+    init:
+      mode: always
+  web:
+    resources:
+      static-locations: file:./uploads/
+springdoc:
+  default-produces-media-type: application/json;charset=UTF-8
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: TRACE
+    org.hibernate.orm.jdbc.extract: TRACE
+    org.springframework.transaction.interceptor: TRACE
+custom:
+  jwt:
+    secretKey: d127ea373846896e7e71340db2b9ff759b37fbdc9bcd1a8d731ef12cc0cf284cd3fc9fdb049e5de3eadee20b6f816601dc2b782247ea0d4a41fd6a5b59e0590a
+  accessToken:
+    expirationSeconds: "#{60*20}"
+
+app:
+  admin:
+    registration-code: "1234"
+
